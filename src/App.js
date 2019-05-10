@@ -17,10 +17,7 @@ const App = () => {
   };
   const operatorArr = ['+', '/', '-', '*'];
   const calculate = () => {
-    if (
-      typeof Number(currentInput) === 'number' &&
-      !isNaN(Number(currentInput))
-    ) {
+    if (isValidNumber(currentInput)) {
       let calcArr = [...inputArr, currentInput];
       const calculated = eval(calcArr.join(''));
       setCurrentInput(calculated);
@@ -45,24 +42,13 @@ const App = () => {
         setCurrentInput(`${currentInput}${value}`);
       }
     } else if (isOperator(value)) {
-      if (isOperator(currentInput)) {
-        setCurrentInput(value);
-      } else if (isOperator(value)) {
+      if (!isOperator(currentInput)) {
         setInputArr([...inputArr, currentInput]);
-        setCurrentInput(value);
-      } else if (isValidNumber(currentInput)) {
-        setInputArr([...inputArr, currentInput]);
-        setCurrentInput(value);
       }
+      setCurrentInput(value);
     } else if (value === '.') {
-      if (isOperator(currentInput)) {
-        return;
-      }
       decimal(currentInput);
     } else if (value === '=') {
-      if (isOperator(currentInput)) {
-        return;
-      }
       calculate();
     }
   };
