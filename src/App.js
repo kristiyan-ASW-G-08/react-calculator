@@ -31,24 +31,24 @@ const App = () => {
   const isOperator = value => operatorArr.includes(value);
   const isValidNumber = value =>
     typeof Number(value) === 'number' && !isNaN(Number(value));
-  const currentInputHandler = value => {
-    if (isValidNumber(value)) {
+  const currentInputHandler = newInput => {
+    if (isValidNumber(newInput)) {
       if (isOperator(currentInput)) {
         setInputArr([...inputArr, currentInput]);
-        setCurrentInput(value);
+        setCurrentInput(newInput);
       } else if (currentInput === '0') {
-        setCurrentInput(`${value}`);
+        setCurrentInput(`${newInput}`);
       } else {
-        setCurrentInput(`${currentInput}${value}`);
+        setCurrentInput(`${currentInput}${newInput}`);
       }
-    } else if (isOperator(value)) {
+    } else if (isOperator(newInput)) {
       if (!isOperator(currentInput)) {
         setInputArr([...inputArr, currentInput]);
       }
-      setCurrentInput(value);
-    } else if (value === '.') {
+      setCurrentInput(newInput);
+    } else if (newInput === '.') {
       decimal(currentInput);
-    } else if (value === '=') {
+    } else if (newInput === '=') {
       calculate();
     }
   };
