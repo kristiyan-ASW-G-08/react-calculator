@@ -1,0 +1,66 @@
+$dark: #212121;
+$primary: rgb(245, 86, 75);
+$light: white;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@mixin large-screen() {
+  @media only screen and (min-width: 1300px) {
+    @content;
+  }
+}
+@mixin center {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+}
+.App {
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  @include center;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  @include large-screen {
+    width: 30vw;
+  }
+  @include center;
+}
+.keypad {
+  width: 80%;
+  button {
+    padding: 0.3rem;
+    background: $primary;
+    color: $light;
+    border: none;
+  }
+  .keypad-buttons {
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.2rem;
+  }
+}
+
+#display {
+  width: 80%;
+  display: block;
+  text-align: left;
+  line-height: 2;
+  background-color: #f7f7f7;
+  padding: 1.5rem;
+}
+#display-calculations {
+  width: 80%;
+  display: block;
+  text-align: left;
+  line-height: 2;
+  background-color: #f7f7f7;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}

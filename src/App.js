@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import Keypad from './components/Keypad';
-import { isArray } from 'util';
 const App = () => {
   const [inputArr, setInputArr] = useState([]);
   const [currentInput, setCurrentInput] = useState('0');
@@ -55,9 +54,11 @@ const App = () => {
 
   return (
     <div className="App">
-      <div>{inputArr.join(' ')}</div>
-      <div id="display">{currentInput}</div>
-      <Keypad clear={clear} currentInputHandler={currentInputHandler} />
+      <main className="main-container">
+        <div id="display-calculations">{inputArr.join(' ')}</div>
+        <div id="display">{currentInput}</div>
+        <Keypad clear={clear} currentInputHandler={currentInputHandler} />
+      </main>
     </div>
   );
 };

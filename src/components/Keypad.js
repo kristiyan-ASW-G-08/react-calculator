@@ -18,18 +18,11 @@ const Keypad = ({ currentInputHandler, clear }) => {
     { name: 'subtract', value: '-' },
     { name: 'multiply', value: '*' },
     { name: 'divide', value: '/' },
-    { name: 'equals', value: '=' },
-    { name: 'decimal', value: '.' }
+    { name: 'equals', value: '=' }
   ];
   return (
     <div className="keypad">
-      <div className="keypad-numbers">
-        <Key
-          id="clear"
-          key={'clear'}
-          keyItem={{ name: 'AC', value: 'AC' }}
-          currentInputHandler={clear}
-        />
+      <div className="keypad-buttons">
         {operators.map(operatorKey => (
           <Key
             id={operatorKey.name}
@@ -39,7 +32,7 @@ const Keypad = ({ currentInputHandler, clear }) => {
           />
         ))}
       </div>
-      <div className="keypad-numbers">
+      <div className="keypad-buttons">
         {numbers.map(numKey => (
           <Key
             id={numKey.name}
@@ -48,6 +41,18 @@ const Keypad = ({ currentInputHandler, clear }) => {
             currentInputHandler={currentInputHandler}
           />
         ))}
+        <Key
+          id="decimal"
+          key={'decimal'}
+          keyItem={{ name: 'decimal', value: '.' }}
+          currentInputHandler={currentInputHandler}
+        />
+        <Key
+          id="clear"
+          key={'clear'}
+          keyItem={{ name: 'AC', value: 'AC' }}
+          currentInputHandler={clear}
+        />
       </div>
     </div>
   );
